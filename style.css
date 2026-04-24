@@ -1,0 +1,39 @@
+:root {
+    --bg: #f3f8f4;
+    --primary: #1f6f4a;
+    --primary-dark: #154e34;
+    --accent: #f2b84b;
+    --text: #1d2a22;
+    --white: #ffffff;
+    --shadow: 0 8px 24px rgba(24, 53, 39, 0.15);
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at top left, #e9f4ec 0%, var(--bg) 60%);
+    color: var(--text);
+}
+
+header {
+    position: sticky;
+    top: 0;
+    background: var(--white);
+    padding: 14px 18px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+.hero {
+    background: var(--white);
+    border-left: 8px solid var(--accent);
+    border-radius: 14px;
+    padding: 34px;
+    box-shadow: var(--shadow);
+}
