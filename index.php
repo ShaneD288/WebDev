@@ -123,6 +123,11 @@
 			padding-left: 20px;
 			line-height: 1.6;
 		}
+
+		footer {
+			padding: 14px 18px;
+			text-align: center;
+		}
 	</style>
 </head>
 <body>

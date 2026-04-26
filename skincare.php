@@ -151,7 +151,7 @@
 
 	<main>
 		<section class="hero">
-			<a class="back-link" href="HomePage.html">&larr; Back to Home</a>
+			<a class="back-link" href="index.php">&larr; Back to Home</a>
 			<h1>Skin Care</h1>
 			<p>Browse a few simple skincare products available in-store.</p>
 

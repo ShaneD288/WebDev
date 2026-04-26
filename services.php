@@ -153,7 +153,7 @@
 
 	<main>
 		<section class="hero">
-			<a class="back-link" href="HomePage.html">&larr; Back to Home</a>
+			<a class="back-link" href="index.php">&larr; Back to Home</a>
 			<h1>Our Services</h1>
 			<p>Book one of our in-store services below.</p>
 

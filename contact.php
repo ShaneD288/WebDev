@@ -136,7 +136,7 @@
 
 	<main>
 		<section class="hero">
-			<a class="back-link" href="HomePage.html">&larr; Back to Home</a>
+			<a class="back-link" href="index.php">&larr; Back to Home</a>
 			<h1>Contact Us</h1>
 			<ul class="contact-list">
 				<li>Phone: <a href="tel:+353 87 421 6646">+353 87 421 6646</a></li>

@@ -151,7 +151,7 @@
 
 	<main>
 		<section class="hero">
-			<a class="back-link" href="HomePage.html">&larr; Back to Home</a>
+			<a class="back-link" href="index.php">&larr; Back to Home</a>
 			<h1>Gift Ideas</h1>
 			<p>Choose a simple health and wellness gift for someone special. Shop our extensive range of gift options in store.</p>
 

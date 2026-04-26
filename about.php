@@ -147,7 +147,7 @@
 
 	<main>
 		<section class="hero">
-			<a class="back-link" href="HomePage.html">&larr; Back to Home</a>
+			<a class="back-link" href="index.php">&larr; Back to Home</a>
 			<h1>About Us</h1>
 			<p>
 				Dillons Pharmacy is a proudly Irish, family-owned business founded in 1971, rooted in care, trust, and community. 
