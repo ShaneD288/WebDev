@@ -11,7 +11,7 @@ if(isset($_POST['create_account'])) {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    // Validation
+    // check alll fields are fille correctly
     if(empty($fullname) || empty($email) || empty($password) || empty($confirm_password)) {
         $error = "All fields are required";
     } elseif(strlen($fullname) < 2) {
@@ -379,7 +379,7 @@ if(isset($_POST['create_account'])) {
         .login-text a:hover {
             color: var(--primary-dark);
         }
-
+        /* adjust to screen size */
         @media (max-width: 820px) {
             .container {
                 grid-template-columns: 1fr;
@@ -446,6 +446,7 @@ if(isset($_POST['create_account'])) {
             <h2>Create Account</h2>
             <p>Fill in your details to get started</p>
 
+            <!-- error message display -->
             <?php if($error): ?>
                 <div class="message error">
                     <i class="fas fa-exclamation-circle"></i>
@@ -489,6 +490,7 @@ if(isset($_POST['create_account'])) {
                         placeholder="your.email@example.com"
                         required 
                         autocomplete="email"
+                        
                         value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>"
                     />
                 </div>
