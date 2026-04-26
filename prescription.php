@@ -2,25 +2,28 @@
 session_start();
 include 'config.php';
 
-// 🔐 Protect page (must be logged in)
+// only allow logged in users to view pages 
 if(!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
 }
 
-// ➕ Add or ✏️ Update prescription
+// update prescription
 $edit_id = null;
 $edit_data = null;
 
+// check for id 
 if(isset($_GET['edit'])) {
     $edit_id = $_GET['edit'];
+	// get data from database 
     $result = mysqli_query($conn, "SELECT * FROM prescriptions WHERE id = '$edit_id'");
     if(mysqli_num_rows($result) > 0) {
         $edit_data = mysqli_fetch_assoc($result);
     }
 }
-
+// add prescription
 if(isset($_POST['submit'])) {
+	// form
     $fname = $_POST['first_name'];
     $lname = $_POST['last_name'];
     $dob = $_POST['dob'];
@@ -204,7 +207,7 @@ if(isset($_POST['submit'])) {
         <h1>Prescription Renewal</h1>
         <p>Fill out the form below to request a prescription renewal.</p>
 
-        <!-- 📝 FORM -->
+        <!--  form -->
         <div class="box">
             <h2><?php echo $edit_data ? 'Edit Prescription' : 'Renewal Request Form'; ?></h2>
 
@@ -248,15 +251,17 @@ if(isset($_POST['submit'])) {
             </form>
         </div>
 
-        <!-- 📊 DISPLAY DATA -->
+        <!-- display data -->
         <div class="box">
             <h2>Saved Prescriptions</h2>
 
             <?php
+			// get prescription data
             $result = mysqli_query($conn, "SELECT * FROM prescriptions");
-
+			// error check
             if(mysqli_num_rows($result) > 0) {
                 while($row = mysqli_fetch_assoc($result)) {
+					// display details
                     echo "<div style='margin-bottom:10px; padding:10px; border:1px solid #ccc; border-radius:8px;'>
                         <strong>{$row['first_name']} {$row['last_name']}</strong><br>
                         DOB: {$row['dob']}<br>
