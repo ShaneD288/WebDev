@@ -2,30 +2,38 @@
 session_start();
 include 'config.php';
 
+//Variables to store messages
 $error = '';
 $success = '';
 
+//Check if the form is submitted 
 if(isset($_POST['login'])) {
-    $email = trim($_POST['email']);
+    $email = trim($_POST['email']); 
     $password = $_POST['password'];
 
+    
     if(empty($email) || empty($password)) {
         $error = "Email and password are required";
     } else {
-        // Using prepared statements for better security
+
+        //looks for users email
         $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
+        // check if a users email exists 
         if($result->num_rows > 0) {
             $user = $result->fetch_assoc();
-            // Check password (ideally use password_verify with hashed passwords)
+
+            // compare passwords 
             if($password === $user['password']) {
+                
                 $_SESSION['user'] = $email;
                 $_SESSION['user_id'] = $user['id'];
                 header("Location: prescription.php");
                 exit();
+                
             } else {
                 $error = "Invalid email or password";
             }
@@ -64,7 +72,7 @@ if(isset($_POST['login'])) {
             --shadow: 0 18px 50px rgba(24, 53, 39, 0.16);
             --light-shadow: 0 4px 15px rgba(24, 53, 39, 0.08);
         }
-
+        /* page layout */
         body {
             min-height: 100vh;
             font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -79,6 +87,7 @@ if(isset($_POST['login'])) {
             padding: 20px;
         }
 
+        /* main container */
         .container {
             width: 100%;
             max-width: 900px;
@@ -118,7 +127,7 @@ if(isset($_POST['login'])) {
             background: radial-gradient(circle, rgba(242, 184, 75, 0.1), transparent);
             border-radius: 50%;
         }
-
+        /* brings brand to front */
         .brand-content {
             position: relative;
             z-index: 2;
@@ -166,14 +175,14 @@ if(isset($_POST['login'])) {
             line-height: 1.8;
             color: rgba(248, 252, 248, 0.92);
         }
-
+        /* adds checkmark */
         .features li::before {
             content: '✓ ';
             color: var(--accent);
             font-weight: 700;
             margin-right: 10px;
         }
-
+        
         .form-section {
             padding: 48px;
             display: flex;
@@ -387,6 +396,7 @@ if(isset($_POST['login'])) {
             color: var(--primary-dark);
         }
 
+        /* adjust for screen size */
         @media (max-width: 820px) {
             .container {
                 grid-template-columns: 1fr;
@@ -448,6 +458,7 @@ if(isset($_POST['login'])) {
             <h2>Sign In</h2>
             <p>Enter your credentials to access your account</p>
 
+            <!-- displays error messages  -->
             <?php if($error): ?>
                 <div class="message error">
                     <i class="fas fa-exclamation-circle"></i>
